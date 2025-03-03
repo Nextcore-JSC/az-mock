@@ -1,0 +1,156 @@
+<html>
+<head>
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('hidden');
+        }
+    </script>
+</head>
+<body class="bg-gray-100">
+    <div class="flex">
+   <!-- Sidebar -->
+   <div class="w-64 bg-white h-screen shadow-md" id="sidebar">
+    <div class="p-4 flex flex-col items-center">
+     <img alt="Profile picture of Đinh Hữu Hưng" class="rounded-full mb-4" height="100" src="https://storage.googleapis.com/a1aa/image/Jr9VRb6BBANYb1goDgLRZvP_HGHFaJBEWj4x86aA4eI.jpg" width="100"/>
+     <h2 class="text-lg font-semibold">
+      Đinh Hữu Hưng
+     </h2>
+     <p class="text-gray-500">
+      Chủ tịch HĐQT
+     </p>
+    </div>
+    <nav class="mt-6">
+     <div class="px-4 py-2 text-gray-500 uppercase">
+      Thông tin chung
+     </div>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="list-user.html">
+      <i class="fas fa-users mr-3">
+      </i>
+      Người dùng
+     </a>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="group.html">
+      <i class="fas fa-user-friends mr-3">
+      </i>
+      Quyền
+     </a>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="branch-list.html">
+      <i class="fas fa-code-branch mr-3">
+      </i>
+      Chi nhánh
+     </a>
+     <div class="px-4 py-2 text-gray-500 uppercase mt-6">
+      Vùng dự án
+     </div>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="project-template.html">
+      <i class="fas fa-file-alt mr-3">
+      </i>
+      Dự án mẫu
+     </a>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="project-list.html">
+      <i class="fas fa-tasks mr-3">
+      </i>
+      Dự án
+     </a>
+     <div class="px-4 py-2 text-gray-500 uppercase mt-6">
+      Vùng quy trình
+     </div>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="workflow-template-list.html">
+      <i class="fas fa-file-alt mr-3">
+      </i>
+      Quy trình mẫu
+     </a>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="workflow-list.html">
+      <i class="fas fa-project-diagram mr-3">
+      </i>
+      Quy trình
+     </a>
+     <div class="px-4 py-2 text-gray-500 uppercase mt-6">
+        Báo cáo
+       </div>
+       <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="report-list.html">
+        <i class="fas fa-chart-line mr-2">
+        </i>
+        Báo cáo
+       </a>
+    </nav>
+   </div>
+   <!-- Main Content -->
+        <div class="flex-1 p-6">
+            <!-- Top Bar -->
+            <div class="flex justify-between items-center mb-6 bg-white p-4 shadow-md w-full">
+                <button class="text-gray-500 text-2xl" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <input class="bg-white p-2 rounded-lg shadow-md pl-10 w-48" placeholder="Tìm kiếm" type="text"/>
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-500"></i>
+                    </div>
+                    <div class="relative">
+                        <i class="fas fa-bell text-gray-500 text-2xl"></i>
+                        <span class="bg-red-500 text-white text-xs rounded-full px-2 py-1 absolute top-0 right-0">3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-lg font-semibold">Danh sách người dùng</h2>
+                    <a class="bg-blue-500 text-white px-4 py-2 rounded-lg" href="add-user.html">Thêm người dùng</a>
+                </div>
+                <table class="w-full">
+                    <thead>
+                        <tr class="text-left">
+                            <th class="pb-2">Họ và tên</th>
+                            <th class="pb-2">Email</th>
+                            <th class="pb-2">Vai trò</th>
+                            <th class="pb-2">Trạng thái</th>
+                            <th class="pb-2">Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t">
+                            <td class="py-2">Đinh Hữu Hưng</td>
+                            <td class="py-2">dinhhuuhung@azgroup.vn</td>
+                            <td class="py-2">Chủ tịch HĐQT</td>
+                            <td class="py-2">
+                                <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs">Đang hoạt động</span>
+                            </td>
+                            <td class="py-2">
+                                <button class="text-blue-500 hover:underline">Chỉnh sửa</button>
+                                <button class="text-red-500 hover:underline ml-2">Xóa</button>
+                            </td>
+                        </tr>
+                        <tr class="border-t">
+                            <td class="py-2">Tran Duc Anh</td>
+                            <td class="py-2">tranducanh@azgroup.vn</td>
+                            <td class="py-2">Phó Chủ tịch HĐQT</td>
+                            <td class="py-2">
+                                <span class="bg-yellow-500 text-white px-2 py-1 rounded-full text-xs">Chờ xét duyệt</span>
+                            </td>
+                            <td class="py-2">
+                                <button class="text-blue-500 hover:underline">Chỉnh sửa</button>
+                                <button class="text-red-500 hover:underline ml-2">Xóa</button>
+                            </td>
+                        </tr>
+                        <tr class="border-t">
+                            <td class="py-2">Ho Ngoc Tan</td>
+                            <td class="py-2">hongoctan@azgroup.vn</td>
+                            <td class="py-2">Nhân viên Sale</td>
+                            <td class="py-2">
+                                <span class="bg-red-500 text-white px-2 py-1 rounded-full text-xs">Ngừng hoạt động</span>
+                            </td>
+                            <td class="py-2">
+                                <button class="text-blue-500 hover:underline">Chỉnh sửa</button>
+                                <button class="text-red-500 hover:underline ml-2">Xóa</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

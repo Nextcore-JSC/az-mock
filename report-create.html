@@ -1,0 +1,235 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Report Management
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+ </head>
+ <body class="bg-gray-100">
+  <div class="flex">
+   <!-- Sidebar -->
+   <div class="w-64 bg-white h-screen shadow-md" id="sidebar">
+    <div class="p-4 flex flex-col items-center">
+     <img alt="Profile picture of Đinh Hữu Hưng" class="rounded-full mb-4" height="100" src="https://storage.googleapis.com/a1aa/image/Jr9VRb6BBANYb1goDgLRZvP_HGHFaJBEWj4x86aA4eI.jpg" width="100"/>
+     <h2 class="text-lg font-semibold">
+      Đinh Hữu Hưng
+     </h2>
+     <p class="text-gray-500">
+      Chủ tịch HĐQT
+     </p>
+    </div>
+    <nav class="mt-6">
+     <div class="px-4 py-2 text-gray-500 uppercase">
+      Thông tin chung
+     </div>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="list-user.html">
+      <i class="fas fa-users mr-3">
+      </i>
+      Người dùng
+     </a>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="group.html">
+      <i class="fas fa-user-friends mr-3">
+      </i>
+      Quyền
+     </a>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="branch-list.html">
+      <i class="fas fa-code-branch mr-3">
+      </i>
+      Chi nhánh
+     </a>
+     <div class="px-4 py-2 text-gray-500 uppercase mt-6">
+      Vùng dự án
+     </div>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="project-template.html">
+      <i class="fas fa-file-alt mr-3">
+      </i>
+      Dự án mẫu
+     </a>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="project-list.html">
+      <i class="fas fa-tasks mr-3">
+      </i>
+      Dự án
+     </a>
+     <div class="px-4 py-2 text-gray-500 uppercase mt-6">
+      Vùng quy trình
+     </div>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="workflow-template-list.html">
+      <i class="fas fa-file-alt mr-3">
+      </i>
+      Quy trình mẫu
+     </a>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="workflow-list.html">
+      <i class="fas fa-project-diagram mr-3">
+      </i>
+      Quy trình
+     </a>
+     <div class="px-4 py-2 text-gray-500 uppercase mt-6">
+        Báo cáo
+       </div>
+       <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="report-list.html">
+        <i class="fas fa-chart-line mr-2">
+        </i>
+        Báo cáo
+       </a>
+    </nav>
+   </div>
+   <!-- Main Content -->
+   <div class="flex-1 p-6">
+    <!-- Top Bar -->
+    <div class="flex justify-between items-center mb-6">
+     <button class="text-gray-600 text-2xl">
+      <i class="fas fa-bars">
+      </i>
+     </button>
+     <div class="flex items-center">
+      <input class="border rounded p-2 mr-4" placeholder="Tìm kiếm" type="text"/>
+      <i class="fas fa-bell text-red-500">
+      </i>
+     </div>
+    </div>
+    <!-- Report List -->
+    <h1 class="text-2xl font-bold text-center mb-4">báo cáo</h1>
+        <form class="bg-white p-6 rounded-lg shadow-md">
+            <div class="mb-4">
+                <label for="title" class="block text-gray-700 font-bold mb-2">Tên báo cáo</label>
+                <input type="text" id="title" name="title" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nhập tên báo cáo">
+            </div>
+            <div class="mb-4">
+                <label for="description" class="block text-gray-700 font-bold mb-2">Mô tả</label>
+                <textarea id="description" name="description" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nhập mô tả"></textarea>
+            </div>
+            <div class="mb-4">
+                <label for="report-date" class="block text-gray-700 font-bold mb-2">Ngày báo cáo</label>
+                <input type="date" id="report-date" name="report-date" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="photo" class="block text-gray-700 font-bold mb-2">Ảnh chung</label>
+                <input type="file" id="photo" name="photo" accept="image/*" capture="environment" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="mb-4">
+                <label for="send-to" class="block text-gray-700 font-bold mb-2">Gửi báo cáo đến</label>
+                <select id="send-to" name="send-to" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="member1">Người dùng 1</option>
+                    <option value="member2">Người dùng 2</option>
+                    <option value="member3">Người dùng 3</option>
+                    <option value="member4">Người dùng 4</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2">Nhân công</label>
+                <div class="overflow-x-auto">
+                    <table id="employee-table" class="min-w-full bg-white border">
+                        <thead>
+                            <tr>
+                                <th class="py-2 px-4 border-b">Tên</th>
+                                <th class="py-2 px-4 border-b">Vai trò</th>
+                                <th class="py-2 px-4 border-b"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="py-2 px-4 border-b"><input type="text" name="employee-name[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tên"></td>
+                                <td class="py-2 px-4 border-b"><input type="text" name="employee-role[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Vai trò"></td>
+                                <td class="py-2 px-4 border-b text-center"><button type="button" class="text-red-500" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-4 border-b"><input type="text" name="employee-name[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tên"></td>
+                                <td class="py-2 px-4 border-b"><input type="text" name="employee-role[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Vai trò"></td>
+                                <td class="py-2 px-4 border-b text-center"><button type="button" class="text-red-500" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center mt-2">
+                    <button type="button" class="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500" onclick="addRow('employee-table')"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2">Vật tư</label>
+                <div class="overflow-x-auto">
+                    <table id="material-table" class="min-w-full bg-white border">
+                        <thead>
+                            <tr>
+                                <th class="py-2 px-4 border-b">Tên vật tư</th>
+                                <th class="py-2 px-4 border-b">Số lượng</th>
+                                <th class="py-2 px-4 border-b"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="py-2 px-4 border-b"><input type="text" name="material-name[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tên vật tư"></td>
+                                <td class="py-2 px-4 border-b"><input type="number" name="material-quantity[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Số lượng"></td>
+                                <td class="py-2 px-4 border-b text-center"><button type="button" class="text-red-500" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-4 border-b"><input type="text" name="material-name[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tên vật tư"></td>
+                                <td class="py-2 px-4 border-b"><input type="number" name="material-quantity[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Số lượng"></td>
+                                <td class="py-2 px-4 border-b text-center"><button type="button" class="text-red-500" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center mt-2">
+                    <button type="button" class="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500" onclick="addRow('material-table')"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2">Tiến độ</label>
+                <div class="overflow-x-auto">
+                    <table id="progress-table" class="min-w-full bg-white border">
+                        <thead>
+                            <tr>
+                                <th class="py-2 px-4 border-b">No</th>
+                                <th class="py-2 px-4 border-b">Công việc</th>
+                                <th class="py-2 px-4 border-b">Người thực hiện</th>
+                                <th class="py-2 px-4 border-b">Ảnh</th>
+                                <th class="py-2 px-4 border-b">Ngày bắt đầu</th>
+                                <th class="py-2 px-4 border-b">Ngày kết thúc</th>
+                                <th class="py-2 px-4 border-b">Trạng thái</th>
+                                <th class="py-2 px-4 border-b">Ghi chú</th>
+                                <th class="py-2 px-4 border-b"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="py-2 px-4 border-b">1</td>
+                                <td class="py-2 px-4 border-b"><input type="text" name="progress-name[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tên công việc"></td>
+                                <td class="py-2 px-4 border-b"><input type="text" name="progress-assign[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Người thực hiện"></td>
+                                <td class="py-2 px-4 border-b"><input type="file" name="progress-image[]" accept="image/*" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></td>
+                                <td class="py-2 px-4 border-b"><input type="date" name="progress-date-begin[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></td>
+                                <td class="py-2 px-4 border-b"><input type="date" name="progress-date-end[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></td>
+                                <td class="py-2 px-4 border-b"><input type="text" name="progress-status[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Trạng thái"></td>
+                                <td class="py-2 px-4 border-b"><input type="text" name="progress-note[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ghi chú"></td>
+                                <td class="py-2 px-4 border-b text-center"><button type="button" class="text-red-500" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 px-4 border-b">2</td>
+                                <td class="py-2 px-4 border-b"><input type="text" name="progress-name[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tên công việc"></td>
+                                <td class="py-2 px-4 border-b"><input type="text" name="progress-assign[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Người thực hiện"></td>
+                                <td class="py-2 px-4 border-b"><input type="file" name="progress-image[]" accept="image/*" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></td>
+                                <td class="py-2 px-4 border-b"><input type="date" name="progress-date-begin[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></td>
+                                <td class="py-2 px-4 border-b"><input type="date" name="progress-date-end[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></td>
+                                <td class="py-2 px-4 border-b"><input type="text" name="progress-status[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Trạng thái"></td>
+                                <td class="py-2 px-4 border-b"><input type="text" name="progress-note[]" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ghi chú"></td>
+                                <td class="py-2 px-4 border-b text-center"><button type="button" class="text-red-500" onclick="deleteRow(this)"><i class="fas fa-trash"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center mt-2">
+                    <button type="button" class="bg-blue-500 text-white p-2 rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500" onclick="addRow('progress-table')"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Lưu báo cáo</button>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">Gửi báo cáo</button>
+            </div>
+        </form>
+   </div>
+  </div>
+ </body>
+</html>

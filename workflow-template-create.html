@@ -1,0 +1,247 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Create Workflow Template
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   .status-label {
+      white-space: nowrap;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .tablinks {
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: background-color 0.3s;
+    }
+    .tablinks.active {
+      background-color: #4a90e2;
+      color: white;
+      border-radius: 0.25rem 0.25rem 0 0;
+    }
+    .tablinks:hover {
+      background-color: #e5e7eb;
+    }
+    .tab-container {
+      border-bottom: 2px solid #e5e7eb;
+    }
+    .draggable {
+      cursor: grab;
+    }
+    .droppable {
+      min-height: 200px;
+      border: 2px dashed #e5e7eb;
+      padding: 1rem;
+    }
+  </style>
+  <script>
+   function allowDrop(ev) {
+      ev.preventDefault();
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+      var nodeCopy = document.getElementById(data).cloneNode(true);
+      nodeCopy.id = "newId"; /* We cannot use the same ID */
+      ev.target.appendChild(nodeCopy);
+    }
+  </script>
+ </head>
+ <body class="bg-gray-100">
+  <div class="flex">
+   <!-- Sidebar -->
+   <div class="w-64 bg-white h-screen shadow-md" id="sidebar">
+    <div class="p-4 flex flex-col items-center">
+     <img alt="Profile picture of Đinh Hữu Hưng" class="rounded-full mb-4" height="100" src="https://storage.googleapis.com/a1aa/image/Jr9VRb6BBANYb1goDgLRZvP_HGHFaJBEWj4x86aA4eI.jpg" width="100"/>
+     <h2 class="text-lg font-semibold">
+      Đinh Hữu Hưng
+     </h2>
+     <p class="text-gray-500">
+      Chủ tịch HĐQT
+     </p>
+    </div>
+    <nav class="mt-6">
+     <div class="px-4 py-2 text-gray-500 uppercase">
+      Thông tin chung
+     </div>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="list-user.html">
+      <i class="fas fa-users mr-3">
+      </i>
+      Người dùng
+     </a>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="group.html">
+      <i class="fas fa-user-friends mr-3">
+      </i>
+      Quyền
+     </a>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="branch-list.html">
+      <i class="fas fa-code-branch mr-3">
+      </i>
+      Chi nhánh
+     </a>
+     <div class="px-4 py-2 text-gray-500 uppercase mt-6">
+      Vùng dự án
+     </div>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="project-template.html">
+      <i class="fas fa-file-alt mr-3">
+      </i>
+      Dự án mẫu
+     </a>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="project-list.html">
+      <i class="fas fa-tasks mr-3">
+      </i>
+      Dự án
+     </a>
+     <div class="px-4 py-2 text-gray-500 uppercase mt-6">
+      Vùng quy trình
+     </div>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="workflow-template-list.html">
+      <i class="fas fa-file-alt mr-3">
+      </i>
+      Quy trình mẫu
+     </a>
+     <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="workflow-list.html">
+      <i class="fas fa-project-diagram mr-3">
+      </i>
+      Quy trình
+     </a>
+     <div class="px-4 py-2 text-gray-500 uppercase mt-6">
+        Báo cáo
+       </div>
+       <a class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-200" href="report-list.html">
+        <i class="fas fa-chart-line mr-2">
+        </i>
+        Báo cáo
+       </a>
+    </nav>
+   </div>
+   <!-- Main Content -->
+   <div class="flex-1 p-6">
+    <!-- Top Bar -->
+    <div class="flex justify-between items-center mb-6">
+     <button class="text-gray-600 text-2xl">
+      <i class="fas fa-bars">
+      </i>
+     </button>
+     <div class="flex items-center">
+      <input class="border rounded p-2 mr-4" placeholder="Tìm kiếm" type="text"/>
+      <i class="fas fa-bell text-red-500">
+      </i>
+     </div>
+    </div>
+    <!-- Workflow Template Information -->
+    <div class="bg-white p-6 rounded shadow-md mb-6">
+     <h2 class="text-xl font-semibold mb-4">
+      Thông tin quy trình
+     </h2>
+     <div class="grid grid-cols-1 gap-4">
+      <div>
+       <label class="block text-gray-700">
+        Tên quy trình:
+       </label>
+       <input class="w-full border rounded p-2" type="text"/>
+      </div>
+      <div>
+       <label class="block text-gray-700">
+        Mô tả:
+       </label>
+       <textarea class="w-full border rounded p-2">
+       </textarea>
+      </div>
+     </div>
+    </div>
+    <!-- Workflow Steps and Details -->
+    <div class="flex">
+     <!-- Steps Region -->
+     <div class="w-1/4 bg-white p-6 rounded shadow-md mr-4">
+      <div class="flex justify-between items-center mb-4">
+       <h2 class="text-xl font-semibold">
+        Các bước
+       </h2>
+       <button class="bg-blue-500 text-white px-2 py-1 rounded">
+        Thêm bước
+       </button>
+      </div>
+      <ul class="space-y-2">
+       <li class="bg-gray-100 p-2 rounded cursor-pointer">
+        Bước 1
+       </li>
+       <li class="bg-gray-100 p-2 rounded cursor-pointer">
+        Bước 2
+       </li>
+       <li class="bg-gray-100 p-2 rounded cursor-pointer">
+        Bước 3
+       </li>
+      </ul>
+     </div>
+     <!-- Step Details Region -->
+     <div class="w-2/3 bg-white p-6 rounded shadow-md mr-4">
+      <h2 class="text-xl font-semibold mb-4">
+       Chi tiết bước
+      </h2>
+      <div class="grid grid-cols-1 gap-4 droppable" ondragover="allowDrop(event)" ondrop="drop(event)">
+       <div>
+        <label class="block text-gray-700">
+         Hạng mục 1:
+        </label>
+        <input class="w-full border rounded p-2" type="text"/>
+       </div>
+       <div>
+        <label class="block text-gray-700">
+         Hạng mục 2:
+        </label>
+        <textarea class="w-full border rounded p-2">
+        </textarea>
+       </div>
+       <div>
+        <label class="block text-gray-700">
+         Hạng mục 3:
+        </label>
+        <div class="w-full border rounded p-2 droppable" ondragover="allowDrop(event)" ondrop="drop(event)">
+        </div>
+       </div>
+       <a class="bg-blue-500 text-white px-4 py-2 rounded" href="workflow-template-list.html">
+        Lưu chi tiết bước
+       </a>
+      </div>
+     </div>
+     <!-- Elements Region -->
+     <div class="w-1/3 bg-white p-6 rounded shadow-md">
+      <h2 class="text-xl font-semibold mb-4">
+       Các element
+      </h2>
+      <div class="space-y-4">
+       <div class="bg-gray-100 p-2 rounded draggable" draggable="true" id="textbox" ondragstart="drag(event)">
+        Textbox
+       </div>
+       <div class="bg-gray-100 p-2 rounded draggable" draggable="true" id="dropdown" ondragstart="drag(event)">
+        Dropdown
+       </div>
+       <div class="bg-gray-100 p-2 rounded draggable" draggable="true" id="textarea" ondragstart="drag(event)">
+        Textarea
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>
