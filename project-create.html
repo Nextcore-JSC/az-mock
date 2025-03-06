@@ -27,7 +27,25 @@
             table.appendChild(row);
         }
 
+        function addMaterialRow() {
+            const table = document.getElementById('materialsTableBody');
+            const row = document.createElement('tr');
+            row.classList.add('border-t');
+            row.innerHTML = `
+                <td class="py-2"><input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Tên vật tư"></td>
+                <td class="py-2"><input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Số lượng dự kiến"></td>
+                <td class="py-2"><input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Đơn vị tính"></td>
+                <td class="py-2"><button class="text-red-500 hover:underline" onclick="removeTaskRow(this)">Delete</button></td>
+            `;
+            table.appendChild(row);
+        }
+
         function removeTaskRow(button) {
+            const row = button.parentElement.parentElement;
+            row.remove();
+        }
+
+        function removeMaterialRow(button) {
             const row = button.parentElement.parentElement;
             row.remove();
         }
@@ -36,6 +54,9 @@
             const selectedTemplate = document.getElementById('projectTemplate').value;
             const templateTasksTableBody = document.getElementById('templateTasksTableBody');
             templateTasksTableBody.innerHTML = ''; // Clear existing tasks
+            
+            const templateMaterialsTableBody = document.getElementById('templateMaterialsTableBody');
+            templateMaterialsTableBody.innerHTML = ''; // Clear existing materials
 
             // Example tasks for each template
             const templates = {
@@ -56,6 +77,21 @@
                 ],
             };
 
+            const material_templates = {
+                'Residential Building': [
+                    { name: 'Gạch', count: '1000', unit: 'viên' },
+                    { name: 'Đá', count: '1000', unit: 'm3' },
+                ],
+                'Commercial Building': [
+                    { name: 'Gạch', count: '1000', unit: 'viên' },
+                    { name: 'Đá', count: '1000', unit: 'm3' },
+                ],
+                'Infrastructure Project': [
+                    { name: 'Gạch', count: '1000', unit: 'viên' },
+                    { name: 'Đá', count: '1000', unit: 'm3' },
+                ],
+            }
+
             const tasks = templates[selectedTemplate] || [];
             tasks.forEach(task => {
                 const row = document.createElement('tr');
@@ -66,6 +102,18 @@
                     <td class="py-2">${task.dependent}</td>
                 `;
                 templateTasksTableBody.appendChild(row);
+            });
+
+            const materials = material_templates[selectedTemplate] || [];
+            materials.forEach(task => {
+                const row = document.createElement('tr');
+                row.classList.add('border-t');
+                row.innerHTML = `
+                    <td class="py-2">${task.name}</td>
+                    <td class="py-2">${task.count}</td>
+                    <td class="py-2">${task.unit}</td>
+                `;
+                templateMaterialsTableBody.appendChild(row);
             });
 
             document.getElementById('templateTasksSection').classList.remove('hidden');
@@ -109,6 +157,37 @@
                     <td class="py-2"><button class="text-red-500 hover:underline" onclick="removeTaskRow(this)">Delete</button></td>
                 `;
                 tasksTableBody.appendChild(row);
+            });
+
+            const materialsTableBody = document.getElementById('materialsTableBody');
+            materialsTableBody.innerHTML = ''; // Clear existing materials
+
+            const material_templates = {
+                'Residential Building': [
+                    { name: 'Gạch', count: '1000', unit: 'viên' },
+                    { name: 'Đá', count: '1000', unit: 'm3' },
+                ],
+                'Commercial Building': [
+                    { name: 'Gạch', count: '1000', unit: 'viên' },
+                    { name: 'Đá', count: '1000', unit: 'm3' },
+                ],
+                'Infrastructure Project': [
+                    { name: 'Gạch', count: '1000', unit: 'viên' },
+                    { name: 'Đá', count: '1000', unit: 'm3' },
+                ],
+            }
+
+            const material = material_templates[selectedTemplate] || [];
+            material.forEach(task => {
+                const row = document.createElement('tr');
+                row.classList.add('border-t');
+                row.innerHTML = `
+                    <td class="py-2"><input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="${task.name}" placeholder="Tên vật tư"></td>
+                    <td class="py-2"><input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="${task.count}" placeholder="Số lượng dự kiến"></td>
+                    <td class="py-2"><input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" value="${task.unit}" placeholder="Đơn vị tính"></td>
+                    <td class="py-2"><button class="text-red-500 hover:underline" onclick="removeMaterialRow(this)">Delete</button></td>
+                `;
+                materialsTableBody.appendChild(row);
             });
         }
   </script>
@@ -255,6 +334,26 @@
         <tbody id="templateTasksTableBody">
         </tbody>
        </table>
+       <h3 class="text-gray-700 text-sm font-bold mb-2">
+        Vật tư
+       </h3>
+       <table class="w-full">
+        <thead>
+         <tr class="text-left">
+          <th class="pb-2">
+           Tên vật tư
+          </th>
+          <th class="pb-2">
+           Số lượng dự kiến
+          </th>
+          <th class="pb-2">
+           Đơn vị tính
+          </th>
+         </tr>
+        </thead>
+        <tbody id="templateMaterialsTableBody">
+        </tbody>
+       </table>
        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4" onclick="copyTasksFromTemplate()" type="button">
         Chọn dự án mẫu
        </button>
@@ -321,6 +420,47 @@
         Thêm công việc
        </button>
       </div>
+      <div class="mb-4">
+        <h3 class="text-gray-700 text-sm font-bold mb-2">
+         Vật tư
+        </h3>
+        <table class="w-full">
+         <thead>
+          <tr class="text-left">
+           <th class="pb-2">
+            Tên vật tư
+           </th>
+           <th class="pb-2">
+            Số lượng dự kiến
+           </th>
+           <th class="pb-2">
+            Đơn vị tính
+           </th>
+          </tr>
+         </thead>
+         <tbody id="materialsTableBody">
+          <tr class="border-t">
+           <td class="py-2">
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Tên vật tư" type="text"/>
+           </td>
+           <td class="py-2">
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Số lượng dự kiến" type="text"/>
+           </td>
+           <td class="py-2">
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Đơn vị tính" type="text"/>
+           </td>
+           <td class="py-2">
+            <button class="text-red-500 hover:underline" onclick="removeMaterialRow(this)" type="button">
+             Delete
+            </button>
+           </td>
+          </tr>
+         </tbody>
+        </table>
+        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4" onclick="addMaterialRow()" type="button">
+         Thêm vật tư
+        </button>
+       </div>
       <div class="flex items-center justify-between">
        <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" href="project-list.html">
         Tạo mới dự án

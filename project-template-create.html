@@ -121,75 +121,115 @@
       </div>
      </div>
     </div>
-    <div class="bg-white p-6 rounded-lg shadow-md">
-     <h2 class="text-lg font-semibold mb-4">
-      Tạo mới dự án mẫu
-     </h2>
-     <form>
-      <div class="mb-4">
-       <label class="block text-gray-700 text-sm font-bold mb-2" for="templateName">
-        Tên dự án mẫu
-       </label>
-       <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="templateName" placeholder="Enter template name" type="text"/>
-      </div>
-      <div class="mb-4">
-       <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
-        Mô tả
-       </label>
-       <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="description" placeholder="Enter description">
-       </textarea>
-      </div>
-      <div class="mb-4">
-       <h3 class="text-gray-700 text-sm font-bold mb-2">
-        Công việc
-       </h3>
-       <table class="w-full">
-        <thead>
-         <tr class="text-left">
-          <th class="pb-2">
-           Tên công việc
-          </th>
-          <th class="pb-2">
-           Thời gian
-          </th>
-          <th class="pb-2">
-           Công việc phụ thuộc
-          </th>
-          <th class="pb-2">
-           Hành động
-          </th>
-         </tr>
-        </thead>
-        <tbody id="tasksTableBody">
-         <tr class="border-t">
-          <td class="py-2">
-           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Tên công việc" type="text"/>
-          </td>
-          <td class="py-2">
-           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Thời gian" type="text"/>
-          </td>
-          <td class="py-2">
-           <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Công việc phụ thuộc" type="text"/>
-          </td>
-          <td class="py-2">
-           <button class="text-red-500 hover:underline" onclick="removeTaskRow(this)" type="button">
-            Xóa
-           </button>
-          </td>
-         </tr>
-        </tbody>
-       </table>
-       <button class="bg-blue-500 text-white px-4 py-2 rounded-lg mt-4" onclick="addTaskRow()" type="button">
-        Thêm công việc
-       </button>
-      </div>
-      <div class="flex items-center justify-between">
-       <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" href="project-template.html">
-        Tạo mới dự án mẫu
-       </a>
-      </div>
-     </form>
-    </div>
+    <div class="bg-white shadow-md rounded-lg p-4">
+        <h2 class="text-lg font-semibold mb-4">
+         Tạo Dự án mẫu
+        </h2>
+        <div class="mb-4">
+         <label class="block text-gray-700 mb-2" for="projectName">
+          Tên dự án
+         </label>
+         <input class="border rounded px-4 py-2 w-full" id="projectName" placeholder="Tên dự án" type="text"/>
+        </div>
+        <div class="mb-4">
+         <label class="block text-gray-700 mb-2" for="projectDescription">
+          Mô tả
+         </label>
+         <textarea class="border rounded px-4 py-2 w-full" id="projectDescription" placeholder="Mô tả">
+         </textarea>
+        </div>
+        <div class="mb-4">
+         <h3 class="text-gray-700 mb-2">
+          Công việc
+         </h3>
+         <table class="w-full text-left" id="tasksTable">
+          <thead>
+           <tr>
+            <th class="py-2">
+             Tên công việc
+            </th>
+            <th class="py-2">
+             Thời gian
+            </th>
+            <th class="py-2">
+             Công việc phụ thuộc
+            </th>
+            <th class="py-2">
+             Hành động
+            </th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+            <td>
+             <input class="border rounded px-2 py-1 w-full" placeholder="Tên công việc" type="text"/>
+            </td>
+            <td>
+             <input class="border rounded px-2 py-1 w-full" placeholder="Thời gian" type="text"/>
+            </td>
+            <td>
+             <input class="border rounded px-2 py-1 w-full" placeholder="Công việc phụ thuộc" type="text"/>
+            </td>
+            <td>
+             <button class="text-red-500" onclick="deleteRow(this)">
+              Xóa
+             </button>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+         <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded" onclick="addRow('tasksTable')">
+          Thêm công việc
+         </button>
+        </div>
+        <div class="mb-4">
+         <h3 class="text-gray-700 mb-2">
+          Kho
+         </h3>
+         <table class="w-full text-left" id="materialsTable">
+          <thead>
+           <tr>
+            <th class="py-2">
+             Tên vật tư
+            </th>
+            <th class="py-2">
+             Số lượng dự kiến
+            </th>
+            <th class="py-2">
+             Đơn vị tính
+            </th>
+            <th class="py-2">
+             Hành động
+            </th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+            <td>
+             <input class="border rounded px-2 py-1 w-full" placeholder="Tên vật tư" type="text"/>
+            </td>
+            <td>
+             <input class="border rounded px-2 py-1 w-full" placeholder="Số lượng dự kiến" type="text"/>
+            </td>
+            <td>
+             <input class="border rounded px-2 py-1 w-full" placeholder="Đơn vị tính" type="text"/>
+            </td>
+            <td>
+             <button class="text-red-500" onclick="deleteRow(this)">
+              Xóa
+             </button>
+            </td>
+           </tr>
+          </tbody>
+         </table>
+         <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded" onclick="addRow('materialsTable')">
+          Thêm vật tư
+         </button>
+        </div>
+        <a class="bg-green-500 text-white px-4 py-2 rounded" href="project-template.html">
+         Tạo dự án mẫu
+        </a>
+       </div>
    </div>
   </div>
  </body>
